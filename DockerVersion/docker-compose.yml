@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  spring-app:
+    build: ./
+    depends_on:
+      - postgresql
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/rabam
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+    volumes:
+      - mysharedvolume:/log
+
+  postgresql:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: rabam
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - mysharedvolume:/var/lib/postgresql/data
+
+volumes:
+  mysharedvolume:
