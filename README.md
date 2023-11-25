@@ -43,7 +43,7 @@ This command will launch the Spring Boot application.
 
 ->  You can review the required technical requirements in the project from the following file: `Rabam Case[655].pdf` located at the root path.
 
-->  To access the Postman collection with predefined requests, import the file `API documentation.postman_collection.json` located at the root path.
+->  To access the Postman collection with predefined requests, import the file `API Rabam Java Development.postman_collection.json` located at the root path.
 
 ->  To explore the backend API endpoints and make requests, you can access the Swagger documentation at `http://localhost:8080/swagger-ui/index.html`.
 
