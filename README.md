@@ -47,6 +47,8 @@ This command will launch the Spring Boot application.
 
 ->  To explore the backend API endpoints and make requests, you can access the Swagger documentation at `http://localhost:8080/swagger-ui/index.html`.
 
+->  DockerVersion- not ready yet in the process of making
+
 ## Contact
 
 ->  For any questions or feedback regarding the project, you can contact us at safak.tamses@gmail.com .
