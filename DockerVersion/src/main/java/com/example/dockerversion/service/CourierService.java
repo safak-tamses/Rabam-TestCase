@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class CourierService {
     private final CourierRepository courierRepository;
-    private final PackageService packageService;
+    private final PackService packService;
     private final CenterService centerService;
 
     private Courier getCourierById(Long id) {
@@ -159,7 +159,7 @@ public class CourierService {
 
     public GenericResponse<CourierDTO> receivePackage(Long courierId) {
         try {
-            Package aPackage = packageService.getRandomPackage();
+            Package aPackage = packService.getRandomPackage();
             Courier courier = getCourierById(courierId);
             if (courier.getHasItBeenDelivered() == Boolean.FALSE) {
 
@@ -167,7 +167,7 @@ public class CourierService {
                 courier.setHasItBeenDelivered(Boolean.TRUE);
                 saveCourier(courier);
 
-                packageService.updatePackageStatus(aPackage.getId());
+                packService.updatePackageStatus(aPackage.getId());
 
                 CourierDTO courierDTO = new CourierDTO(
                         courier.getName(),
@@ -195,7 +195,7 @@ public class CourierService {
             if (courier.getHasItBeenDelivered() == Boolean.TRUE &&
                     courier.getDispatchedPackage().getShippingStatus() == Boolean.TRUE
             ) {
-                packageService.packageDelivered(courier.getDispatchedPackage());
+                packService.packageDelivered(courier.getDispatchedPackage());
                 courier.setDispatchedPackage(null);
                 courier.setHasItBeenDelivered(Boolean.FALSE);
                 courierRepository.save(courier);

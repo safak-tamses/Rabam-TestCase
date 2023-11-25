@@ -1,7 +1,7 @@
 package com.example.dockerversion.controller;
 
 import com.example.dockerversion.model.DTO.GeneralResponse;
-import com.example.dockerversion.service.PackageService;
+import com.example.dockerversion.service.PackService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cargo-distribution-center")
 @AllArgsConstructor
 public class CargoDistributionCenterController {
-    private final PackageService packageService;
+    private final PackService packService;
 
     @GetMapping("/daily-deliver")
     public ResponseEntity<GeneralResponse> dailyDelivered() {
-        return new ResponseEntity(packageService.showDailyDeliveringPackage(), HttpStatus.OK);
+        return new ResponseEntity(packService.showDailyDeliveringPackage(), HttpStatus.OK);
     }
 
     @GetMapping("/daily-receivePackage")
     public ResponseEntity<GeneralResponse> dailyReceivePackage() {
-        return new ResponseEntity(packageService.showDailyDeliveredPackage(), HttpStatus.OK);
+        return new ResponseEntity(packService.showDailyDeliveredPackage(), HttpStatus.OK);
     }
 }
